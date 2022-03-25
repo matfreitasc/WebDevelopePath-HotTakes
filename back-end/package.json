@@ -9,11 +9,13 @@
   "author": "Matheus C",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.8",
-    "mongoose-errors": "^1.1.2"
+    "mongoose-errors": "^1.1.2",
+    "mongoose-unique-validator": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
