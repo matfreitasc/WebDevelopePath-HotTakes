@@ -8,3 +8,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Backend
 To run the backend API just use npm run start inside the back-end folder
+The API is located on the port 3000
