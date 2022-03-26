@@ -46,4 +46,5 @@ Thumbs.db
 **/back-end/images/**
 
 # Database files
-**/back-end/ .env 
+
+.env
