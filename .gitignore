@@ -44,3 +44,6 @@ Thumbs.db
 
 # Project Image files
 **/back-end/images/**
+
+# Database files
+**/back-end/ .env 
