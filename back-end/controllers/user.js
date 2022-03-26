@@ -1,5 +1,7 @@
-const bcrypt = require("bcrypt");
-const User = require("../models/user");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const User = require('../models/user');
 
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
@@ -11,7 +13,7 @@ exports.signup = (req, res, next) => {
       .save()
       .then(() => {
         res.status(201).json({
-          message: "User added successfully!",
+          message: 'User added successfully!',
         });
       })
       .catch((error) => {
@@ -26,7 +28,7 @@ exports.login = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          error: new Error("User not found!"),
+          error: new Error('User not found!'),
         });
       }
       bcrypt
@@ -34,12 +36,20 @@ exports.login = (req, res, next) => {
         .then((valid) => {
           if (!valid) {
             return res.status(401).json({
-              error: new Error("Incorrect password!"),
+              error: new Error('Incorrect password!'),
             });
           }
+          const token = jwt.sign(
+            { userId: user._id },
+            'secret_this_should_be_longer',
+            {
+              expiresIn: '24h',
+            }
+          );
+
           res.status(200).json({
             userId: user._id,
-            token: "token",
+            token: token,
           });
         })
         .catch((error) => {
