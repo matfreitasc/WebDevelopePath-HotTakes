@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
       next();
     }
   } catch (error) {
-    res.status(401).json({
+    res.status(403).json({
       error: 'User not authorized!',
     });
   }
