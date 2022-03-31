@@ -78,8 +78,10 @@ exports.deleteSauce = (req, res, next) => {
 };
 
 // like and dislike a sauce
-exports.likeSauce = (req, res, next) => {
-  switch (req.body.like) {
+exports.likeSauce = async (req, res, next) => {
+  const like = await req.body.like;
+
+  switch (like) {
     case 1: // 1 = like from the front end
       Sauce.updateOne(
         { _id: req.params.id },
